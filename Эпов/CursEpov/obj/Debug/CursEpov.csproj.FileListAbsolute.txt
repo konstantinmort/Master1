@@ -1,0 +1,13 @@
+C:\Users\david\Desktop\Эпов\CursEpov\bin\Debug\CursSvet.exe.config
+C:\Users\david\Desktop\Эпов\CursEpov\bin\Debug\CursSvet.exe
+C:\Users\david\Desktop\Эпов\CursEpov\bin\Debug\CursSvet.pdb
+C:\Users\david\Desktop\Эпов\CursEpov\obj\Debug\CursEpov.csprojAssemblyReference.cache
+C:\Users\david\Desktop\Эпов\CursEpov\obj\Debug\CursSvet.Authorization.resources
+C:\Users\david\Desktop\Эпов\CursEpov\obj\Debug\CursSvet.Admin.resources
+C:\Users\david\Desktop\Эпов\CursEpov\obj\Debug\CursSvet.Employees.resources
+C:\Users\david\Desktop\Эпов\CursEpov\obj\Debug\CursSvet.Properties.Resources.resources
+C:\Users\david\Desktop\Эпов\CursEpov\obj\Debug\CursEpov.csproj.GenerateResource.cache
+C:\Users\david\Desktop\Эпов\CursEpov\obj\Debug\CursEpov.csproj.CoreCompileInputs.cache
+C:\Users\david\Desktop\Эпов\CursEpov\obj\Debug\CursSvet.exe
+C:\Users\david\Desktop\Эпов\CursEpov\obj\Debug\CursSvet.pdb
+C:\Users\david\Desktop\Эпов\CursEpov\obj\Debug\CursSvet.ChangeJO.resources
