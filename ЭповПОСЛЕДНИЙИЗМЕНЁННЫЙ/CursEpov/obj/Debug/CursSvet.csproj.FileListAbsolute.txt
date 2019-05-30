@@ -1,0 +1,27 @@
+C:\Users\david\Source\Repos\CursSvet\bin\Debug\CursSvet.exe.config
+C:\Users\david\Source\Repos\CursSvet\bin\Debug\CursSvet.exe
+C:\Users\david\Source\Repos\CursSvet\bin\Debug\CursSvet.pdb
+C:\Users\david\Source\Repos\CursSvet\obj\Debug\CursSvet.csprojAssemblyReference.cache
+C:\Users\david\Source\Repos\CursSvet\obj\Debug\CursSvet.Properties.Resources.resources
+C:\Users\david\Source\Repos\CursSvet\obj\Debug\CursSvet.csproj.GenerateResource.cache
+C:\Users\david\Source\Repos\CursSvet\obj\Debug\CursSvet.csproj.CoreCompileInputs.cache
+C:\Users\david\Source\Repos\CursSvet\obj\Debug\CursSvet.exe
+C:\Users\david\Source\Repos\CursSvet\obj\Debug\CursSvet.pdb
+C:\Users\david\Source\Repos\CursSvet\bin\Debug\Furniture1.mdb
+C:\Users\david\Source\Repos\CursSvet\obj\Debug\CursSvet.Authorization.resources
+C:\Users\david\Source\Repos\CursSvet\obj\Debug\CursSvet.Admin.resources
+C:\Users\david\Source\Repos\CursSvet\obj\Debug\CursSvet.ChangeCustomer.resources
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\obj\Debug\CursSvet.csprojAssemblyReference.cache
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\obj\Debug\CursSvet.Authorization.resources
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\obj\Debug\CursSvet.Admin.resources
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\obj\Debug\CursSvet.ChangeCustomer.resources
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\obj\Debug\CursSvet.Properties.Resources.resources
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\obj\Debug\CursSvet.csproj.GenerateResource.cache
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\obj\Debug\CursSvet.csproj.CoreCompileInputs.cache
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\obj\Debug\CursSvet.exe
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\obj\Debug\CursSvet.pdb
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\bin\Debug\Furniture1.mdb
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\bin\Debug\CursSvet.exe.config
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\bin\Debug\CursSvet.exe
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\bin\Debug\CursSvet.pdb
+C:\Users\david\Desktop\Репозиторий курсовая\CursSvet\obj\Debug\CursSvet.Employees.resources
