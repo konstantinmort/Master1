@@ -18,5 +18,9 @@ namespace CursSvet
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Authorization());
         }
+        public static class Data
+        {
+            public static string Value { get; set; }
+        }
     }
 }

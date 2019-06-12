@@ -20,20 +20,71 @@ namespace CursSvet
         {
             InitializeComponent();
             con.Open();
+            try
+            {
+                comboBox1.Items.Clear();
+                string query = "SELECT ID_supplies FROM Suppliers";
+                OleDbCommand command = new OleDbCommand(query, con);
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    comboBox1.Items.Add(reader[0]);
+                }
+            }
+            catch (Exception es)
+            {
+                MessageBox.Show(es.Message);
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            string query = "UPDATE Suppliers SET [Title]='" + textBox1.Text + "',[Contface]='" + textBox2.Text + "',[Phone]='" + textBox3.Text + "',[Address]='" + textBox4.Text + "' WHERE ID_supplies=" + textBox5.Text;
-
-            OleDbCommand command = new OleDbCommand(query, con);
-
-            command.ExecuteNonQuery();
+            try
+            {
+                string enterprice, job, education, zp;
+                enterprice = textBox1.Text;
+                job = textBox2.Text;
+                education = textBox3.Text;
+                zp = textBox4.Text;
+                string query = "UPDATE Suppliers SET [Title] ='" + enterprice + "'," +
+                               "[Contface] ='" + job + "'," +
+                               "[Phone] ='" + education + "'," +
+                               "[Address] ='" + zp + "' WHERE ID_supplies = " + comboBox1.SelectedItem;
+                OleDbCommand command = new OleDbCommand(query, con);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Изменение успешно выполнено");
+            }
+            catch (Exception es)
+            {
+                MessageBox.Show(es.Message);
+            }
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string query = "SELECT ID_supplies, [Title], [Contface]," +
+                    " [Phone], [Address] FROM Suppliers WHERE ID_supplies =" + comboBox1.SelectedItem;
+                OleDbCommand command = new OleDbCommand(query, con);
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    textBox1.Text = reader[1].ToString();
+                    textBox2.Text = reader[2].ToString();
+                    textBox3.Text = reader[3].ToString();
+                    textBox4.Text = reader[4].ToString();
+                }
+            }
+            catch (Exception es)
+            {
+                MessageBox.Show(es.Message);
+            }
         }
     }
 }
