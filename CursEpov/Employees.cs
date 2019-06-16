@@ -25,6 +25,37 @@ namespace CursSvet
             LoadData2();
             LoadData3();
 
+            try
+            {
+                comboBox2.Items.Clear();
+                string query = "SELECT [ID_products] FROM [JO]";
+                OleDbCommand command = new OleDbCommand(query, con);
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    comboBox2.Items.Add(reader[0]);
+                }
+            }
+            catch (Exception es)
+            {
+                MessageBox.Show(es.Message);
+            }
+
+            try
+            {
+                comboBox3.Items.Clear();
+                string query = "SELECT [ID_products] FROM [JO]";
+                OleDbCommand command = new OleDbCommand(query, con);
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    comboBox3.Items.Add(reader[0]);
+                }
+            }
+            catch (Exception es)
+            {
+                MessageBox.Show(es.Message);
+            }
         }
         private void LoadData()
         {
@@ -57,7 +88,9 @@ namespace CursSvet
 
             OleDbConnection con = new OleDbConnection(connect);
             con.Open();
-            string query = "SELECT * FROM Products ORDER BY ID_products";
+            string query = "SELECT Products.ID_products , Products.ID_suppliers, Products.Drugs, Products.Shelflife, " +
+                " Products.Dosage, Products.Category, Products.Price, [JO].[Amount]+[Products]![Remainder] AS Remaider" +
+                " FROM JO INNER JOIN Products ON JO.ID_products = Products.ID_suppliers";
             OleDbCommand command = new OleDbCommand(query, con);
 
             OleDbDataReader reader = command.ExecuteReader();
@@ -164,7 +197,7 @@ namespace CursSvet
             {
                 try
                 {
-                    string query = "INSERT INTO [Products] ([ID_products], [Drugs], [Amount], [Shelflife], [Dosage], [Category], [Price], [ID_suppliers]) VALUES ('" + textBox16.Text + "','" + textBox15.Text + "','" + textBox6.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + comboBox1 + "','" + textBox24.Text + "','" + textBox25.Text + "')";
+                    string query = "INSERT INTO [Products] ([ID_products], [Drugs], [Shelflife], [Dosage], [Category], [Price], [ID_suppliers]) VALUES ('" + comboBox3.Text + "','" + textBox15.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + comboBox1 + "','" + textBox24.Text + "','" + textBox25.Text + "')";
                     OleDbCommand command = new OleDbCommand(query, con);
                     command.ExecuteNonQuery();
 
@@ -203,7 +236,7 @@ namespace CursSvet
             {
                 try
                 {
-                    string query = "INSERT INTO [Sales] (ID_JO, ID_products, Amount, Price, [Date]) VALUES ('" + textBox23.Text + "','" + textBox9.Text + "','" + textBox10.Text + "','" + textBox11.Text + "','" + textBox27.Text + "')";
+                    string query = "INSERT INTO [Sales] (ID_JO, ID_products, Amount, Price, [Date]) VALUES ('" + textBox23.Text + "','" + comboBox2.Text + "','" + textBox10.Text + "','" + textBox11.Text + "','" + textBox27.Text + "')";
                     OleDbCommand command = new OleDbCommand(query, con);
                     command.ExecuteNonQuery();
                     MessageBox.Show("Добавление успешно выполнено");
@@ -348,41 +381,39 @@ namespace CursSvet
 
         private void Button14_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView3.RowCount; i++)
-                if (dataGridView3[1, i].FormattedValue.ToString().
-                    Contains(textBox12.Text.Trim()))
+            for (int i = 0; i < dataGridView3.Rows.Count - 1; i++)
+                if (dataGridView3[1, i].Value.ToString() != textBox12.Text)
                 {
-                    dataGridView3.CurrentCell = dataGridView3[0, i];
-                    return;
+                    dataGridView3.Rows.RemoveAt(i);
+                    i--;
+
                 }
-            for (int i = 0; i < dataGridView4.RowCount; i++)
-                if (dataGridView4[2, i].FormattedValue.ToString().
-                    Contains(textBox12.Text.Trim()))
+            for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
+                if (dataGridView2[1, i].Value.ToString() != textBox12.Text)
                 {
-                    dataGridView4.CurrentCell = dataGridView4[0, i];
-                    return;
+                    dataGridView2.Rows.RemoveAt(i);
+                    i--;
+
                 }
-            for (int i = 0; i < dataGridView1.RowCount; i++)
-                if (dataGridView1[1, i].FormattedValue.ToString().
-                    Contains(textBox12.Text.Trim()))
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                if (dataGridView1[3, i].Value.ToString() != textBox12.Text)
                 {
-                    dataGridView1.CurrentCell = dataGridView1[0, i];
-                    return;
+                    dataGridView1.Rows.RemoveAt(i);
+                    i--;
+
                 }
-            for (int i = 0; i < dataGridView2.RowCount; i++)
-                if (dataGridView2[1, i].FormattedValue.ToString().
-                    Contains(textBox12.Text.Trim()))
+            for (int i = 0; i < dataGridView4.Rows.Count - 1; i++)
+                if (dataGridView4[1, i].Value.ToString() != textBox12.Text)
                 {
-                    dataGridView2.CurrentCell = dataGridView2[0, i];
-                    return;
+                    dataGridView4.Rows.RemoveAt(i);
+                    i--;
+
                 }
         }
 
         private void PrintDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            var bitmap = new Bitmap(Width, Height);
-            DrawToBitmap(bitmap, new Rectangle(Point.Empty, bitmap.Size));
-            e.Graphics.DrawImage(bitmap, new Point(10, 10));
+          
         }
 
         private void PrintPreviewDialog1_Load(object sender, EventArgs e)
@@ -392,8 +423,110 @@ namespace CursSvet
 
         private void Button13_Click(object sender, EventArgs e)
         {
-            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
-                printDocument1.Print();
+            Dobav cS = new Dobav();
+            cS.ShowDialog();
+        }
+
+        private void Button16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button16_Click_1(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            LoadData();
+            dataGridView2.Rows.Clear();
+            LoadData1();
+            dataGridView3.Rows.Clear();
+            LoadData2();
+            dataGridView4.Rows.Clear();
+            LoadData3();
+          
+        }
+
+        private void Button15_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            LoadData();
+            dataGridView2.Rows.Clear();
+            LoadData1();
+            dataGridView3.Rows.Clear();
+            LoadData2();
+            dataGridView4.Rows.Clear();
+            LoadData3();
+       
+        }
+
+        private void Button17_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            LoadData();
+            dataGridView2.Rows.Clear();
+            LoadData1();
+            dataGridView3.Rows.Clear();
+            LoadData2();
+            dataGridView4.Rows.Clear();
+            LoadData3();
+          
+        }
+
+        private void Button18_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            LoadData();
+            dataGridView2.Rows.Clear();
+            LoadData1();
+            dataGridView3.Rows.Clear();
+            LoadData2();
+            dataGridView4.Rows.Clear();
+            LoadData3();
+     
+        }
+
+        private void TextBox20_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            if (!Char.IsDigit(number))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TextBox19_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void TextBox19_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            if (!Char.IsDigit(number))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ComboBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            if (!Char.IsDigit(number))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TextBox23_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            if (!Char.IsDigit(number))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
