@@ -281,77 +281,56 @@ namespace CursSvet
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            { 
-                try
-                { 
-            string query = "DELETE from Products where ID_products =" + textBox29.Text;
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string query = "DELETE from Products where ID_products =" + textBox29.Text;
 
             OleDbCommand command = new OleDbCommand(query, con);
 
             command.ExecuteNonQuery();
-                    MessageBox.Show("Удаление успешно выполнено");
-                }
-                catch (Exception es)
-                {
-                    MessageBox.Show(es.Message);
-                }
+                 
             }
         }
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            { 
-                try
-                { 
-            string query = "DELETE from JO where ID_O =" + textBox28.Text;
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string query = "DELETE from JO where ID_O =" + textBox28.Text;
 
             OleDbCommand command = new OleDbCommand(query, con);
 
             command.ExecuteNonQuery();
-                    MessageBox.Show("Удаление успешно выполнено");
-                }
-                catch (Exception es)
-                {
-                    MessageBox.Show(es.Message);
-                }
+                  
             }
         }
 
         private void Button10_Click(object sender, EventArgs e)
         {
-            { 
-                try
-                { 
-            string query = "DELETE from Suppliers where ID_suppliers =" + textBox30.Text;
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string query = "DELETE from Suppliers where ID_suppliers =" + textBox30.Text;
 
-            OleDbCommand command = new OleDbCommand(query, con);
+                OleDbCommand command = new OleDbCommand(query, con);
 
-            command.ExecuteNonQuery();
-                    MessageBox.Show("Удаление успешно выполнено");
-                }
-                catch (Exception es)
-                {
-                    MessageBox.Show(es.Message);
-                }
+                command.ExecuteNonQuery();
             }
         }
 
         private void Button12_Click(object sender, EventArgs e)
         {
-            { 
-                try
-                { 
-            string query = "DELETE from [Sales] where ID_JO =" + textBox31.Text;
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string query = "DELETE from [Sales] where ID_JO =" + textBox31.Text;
 
             OleDbCommand command = new OleDbCommand(query, con);
 
             command.ExecuteNonQuery();
-                    MessageBox.Show("Удаление успешно выполнено");
-                }
-                catch (Exception es)
-                {
-                    MessageBox.Show(es.Message);
-                }
+                 
             }
         }
 
@@ -381,34 +360,57 @@ namespace CursSvet
 
         private void Button14_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView3.Rows.Count - 1; i++)
-                if (dataGridView3[1, i].Value.ToString() != textBox12.Text)
-                {
-                    dataGridView3.Rows.RemoveAt(i);
-                    i--;
-
-                }
-            for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
-                if (dataGridView2[1, i].Value.ToString() != textBox12.Text)
-                {
-                    dataGridView2.Rows.RemoveAt(i);
-                    i--;
-
-                }
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                if (dataGridView1[3, i].Value.ToString() != textBox12.Text)
+            {
+                bool isVisible = false;
+                for (int j = 0; j < dataGridView1.Columns.Count; j++)
                 {
-                    dataGridView1.Rows.RemoveAt(i);
-                    i--;
-
+                    if (dataGridView1[j, i].Value.ToString() == textBox12.Text)
+                    {
+                        isVisible = true;
+                    }
                 }
+                dataGridView1.Rows[i].Visible = isVisible;
+            }
+
+            for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
+            {
+                bool isVisible = false;
+                for (int j = 0; j < dataGridView2.Columns.Count; j++)
+                {
+                    if (dataGridView2[j, i].Value.ToString() == textBox12.Text)
+                    {
+                        isVisible = true;
+                    }
+                }
+                dataGridView2.Rows[i].Visible = isVisible;
+            }
+
+            for (int i = 0; i < dataGridView3.Rows.Count - 1; i++)
+            {
+                bool isVisible = false;
+                for (int j = 0; j < dataGridView3.Columns.Count; j++)
+                {
+                    if (dataGridView3[j, i].Value.ToString() == textBox12.Text)
+                    {
+                        isVisible = true;
+                    }
+                }
+                dataGridView3.Rows[i].Visible = isVisible;
+            }
+
             for (int i = 0; i < dataGridView4.Rows.Count - 1; i++)
-                if (dataGridView4[1, i].Value.ToString() != textBox12.Text)
+            {
+                bool isVisible = false;
+                for (int j = 0; j < dataGridView4.Columns.Count; j++)
                 {
-                    dataGridView4.Rows.RemoveAt(i);
-                    i--;
-
+                    if (dataGridView4[j, i].Value.ToString() == textBox12.Text)
+                    {
+                        isVisible = true;
+                    }
                 }
+                dataGridView4.Rows[i].Visible = isVisible;
+            }
         }
 
         private void PrintDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)

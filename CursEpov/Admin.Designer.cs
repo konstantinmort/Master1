@@ -572,6 +572,7 @@
             // textBox22
             // 
             this.textBox22.Location = new System.Drawing.Point(821, 91);
+            this.textBox22.MaxLength = 11;
             this.textBox22.Name = "textBox22";
             this.textBox22.Size = new System.Drawing.Size(100, 20);
             this.textBox22.TabIndex = 14;

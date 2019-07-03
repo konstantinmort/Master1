@@ -332,11 +332,15 @@ namespace CursSvet
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            string query = "DELETE from JO where ID_O =" + textBox28.Text;
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string query = "DELETE from JO where ID_O =" + textBox28.Text;
 
-            OleDbCommand command = new OleDbCommand(query, con);
+                OleDbCommand command = new OleDbCommand(query, con);
 
-            command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+            }
         }
         private void Button17_Click(object sender, EventArgs e)
         {
@@ -359,41 +363,57 @@ namespace CursSvet
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            string query = "DELETE from Products where ID_products =" + textBox29.Text;
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string query = "DELETE from Products where ID_products =" + textBox29.Text;
 
-            OleDbCommand command = new OleDbCommand(query, con);
+                OleDbCommand command = new OleDbCommand(query, con);
 
-            command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
 
-            dataGridView2.Rows.Clear();
-            LoadData1();
+                dataGridView2.Rows.Clear();
+                LoadData1();
+            }
         }
 
         private void Button10_Click(object sender, EventArgs e)
         {
-            string query = "DELETE from Suppliers where ID_supplies =" + textBox30.Text;
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string query = "DELETE from Suppliers where ID_supplies =" + textBox30.Text;
 
-            OleDbCommand command = new OleDbCommand(query, con);
+                OleDbCommand command = new OleDbCommand(query, con);
 
-            command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+            }
         }
 
         private void Button12_Click(object sender, EventArgs e)
         {
-            string query = "DELETE from [Sales] where ID_JO =" + textBox31.Text;
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string query = "DELETE from [Sales] where ID_JO =" + textBox31.Text;
 
-            OleDbCommand command = new OleDbCommand(query, con);
+                OleDbCommand command = new OleDbCommand(query, con);
 
-            command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+            }
         }
 
         private void Button20_Click(object sender, EventArgs e)
         {
-            string query = "DELETE from [Authorization] where ID_employees =" + textBox32.Text;
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string query = "DELETE from [Authorization] where ID_employees =" + textBox32.Text;
 
-            OleDbCommand command = new OleDbCommand(query, con);
+                OleDbCommand command = new OleDbCommand(query, con);
 
-            command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+            }
         }
         private void Button7_Click(object sender, EventArgs e)
         {
@@ -415,63 +435,70 @@ namespace CursSvet
 
         private void Button14_Click(object sender, EventArgs e)
         {
-            //string searchValue = textBox6.Text;
-            //dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //try
-            //{
-            //    bool valueResult = false;
-            //    foreach (DataGridViewRow row in dataGridView3.Rows)
-            //    {
-            //        for (int i = 0; i < row.Cells.Count; i++)
-            //        {
-            //            if (row.Cells[i].Value != null && row.Cells[i].Value.ToString().Equals(searchValue))
-            //            {
-            //                int rowIndex = row.Index;
-            //                dataGridView3.Rows[rowIndex].Selected = true;
-            //                valueResult = true;
-            //                break;
-            //            }
-            //        }
-
-            //    }
-            //    if (!valueResult)
-            //    {
-            //        MessageBox.Show("Unable to find " + textBox6.Text, "Not Found");
-            //        return;
-            //    }
-            //}
-            //catch (Exception exc)
-            //{
-            //    MessageBox.Show(exc.Message);
-            //}
-            for (int i = 0; i < dataGridView3.Rows.Count - 1; i++)
-                if (dataGridView3[1, i].Value.ToString() != textBox6.Text)
-                {
-                    dataGridView3.Rows.RemoveAt(i);
-                    i--;
-
-                }
-            for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
-                if (dataGridView2[1, i].Value.ToString() != textBox6.Text)
-                {
-                    dataGridView2.Rows.RemoveAt(i);
-                    i--;
-
-                }
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                if (dataGridView1[3, i].Value.ToString() != textBox6.Text)
+            {
+                bool isVisible = false;
+                for (int j = 0; j < dataGridView1.Columns.Count; j++)
                 {
-                    dataGridView1.Rows.RemoveAt(i);
-                    i--;
-
+                    if (dataGridView1[j, i].Value.ToString() == textBox6.Text)
+                    {
+                        isVisible = true;
+                    }
                 }
+                dataGridView1.Rows[i].Visible = isVisible;
+            }
+
+            for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
+            {
+                bool isVisible = false;
+                for (int j = 0; j < dataGridView2.Columns.Count; j++)
+                {
+                    if (dataGridView2[j, i].Value.ToString() == textBox6.Text)
+                    {
+                        isVisible = true;
+                    }
+                }
+                dataGridView2.Rows[i].Visible = isVisible;
+            }
+
+            for (int i = 0; i < dataGridView3.Rows.Count - 1; i++)
+            {
+                bool isVisible = false;
+                for (int j = 0; j < dataGridView3.Columns.Count; j++)
+                {
+                    if (dataGridView3[j, i].Value.ToString() == textBox6.Text)
+                    {
+                        isVisible = true;
+                    }
+                }
+                dataGridView3.Rows[i].Visible = isVisible;
+            }
+
             for (int i = 0; i < dataGridView4.Rows.Count - 1; i++)
-                if (dataGridView4[1, i].Value.ToString() != textBox6.Text)
+            {
+                bool isVisible = false;
+                for (int j = 0; j < dataGridView4.Columns.Count; j++)
                 {
-                    dataGridView4.Rows.RemoveAt(i);
-                    i--;
-
+                    if (dataGridView4[j, i].Value.ToString() == textBox6.Text)
+                    {
+                        isVisible = true;
+                    }
                 }
+                dataGridView4.Rows[i].Visible = isVisible;
+            }
+
+            for (int i = 0; i < dataGridView5.Rows.Count - 1; i++)
+            {
+                bool isVisible = false;
+                for (int j = 0; j < dataGridView5.Columns.Count; j++)
+                {
+                    if (dataGridView5[j, i].Value.ToString() == textBox6.Text)
+                    {
+                        isVisible = true;
+                    }
+                }
+                dataGridView5.Rows[i].Visible = isVisible;
+            }
 
         }
 
